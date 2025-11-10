@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  trade-signal:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: trade-signal
+    env_file:
+      - .env
+    restart: unless-stopped
+    # Uncomment if you need to expose ports
+    # ports:
+    #   - "3000:3000"
+
