@@ -99,9 +99,15 @@ export class ActiveProcessingService implements IActiveProcessingService {
           })
         );
         await Promise.allSettled(processingPromises);
+
+        const activesToProcessNames = activesToProcess
+          .map((active) => active.name)
+          .join(", ");
         console.log(
-          `🗂️ Started processing ${activesToProcess.length} for timeframe ${timeframe} minutes in parallel`
+          `🗂️ Started processing ${activesToProcess.length} actives for timeframe ${timeframe} minutes in parallel`,
+          activesToProcessNames
         );
+        console.log("\n");
       } catch (error) {
         console.error(
           `❌ Failed to process timeframe ${timeframe} minutes:`,
@@ -111,7 +117,6 @@ export class ActiveProcessingService implements IActiveProcessingService {
       }
     }
   }
-
   async processActive(
     active: DigitalOptionsUnderlying,
     candleSize: number

@@ -39,7 +39,7 @@ export abstract class BaseFirestoreRepo {
 
     try {
       console.log(
-        `Purge firestore message for ${collectionName} starts at ${new Date()}. Remove data older than ${thresholdDate}`
+        `🧹🪣 Purge firestore message for ${collectionName} starts at ${new Date()}. Remove data older than ${thresholdDate}`
       );
 
       const snapshot = await this.db
@@ -49,7 +49,7 @@ export abstract class BaseFirestoreRepo {
 
       if (snapshot.empty) {
         console.log(
-          `No documents found to purge for collection '${collectionName}'`
+          `🗑️ No documents found to purge for collection '${collectionName}'`
         );
         return;
       }
@@ -64,7 +64,7 @@ export abstract class BaseFirestoreRepo {
       await batch.commit();
 
       console.log(
-        `Purge firestore messages for the collection '${collectionName}' finished at ${new Date()}. Removed ${
+        `🗑️🧹🧹🧹 Purge firestore messages for the collection '${collectionName}' finished at ${new Date()}. Removed ${
           snapshot.size
         } document(s) older than ${thresholdDate}`
       );

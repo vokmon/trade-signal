@@ -15,6 +15,10 @@ export interface AppConfig {
     candleAnalysisIntervalMs: number;
     activeRefreshIntervalMs: number;
   };
+  firestore: {
+    purgeIntervalMs: number;
+    purgeRetentionHours: number;
+  };
 }
 
 export const createAppConfig = (): AppConfig => {
@@ -52,6 +56,17 @@ export const createAppConfig = (): AppConfig => {
         process.env.ACTIVE_REFRESH_INTERVAL_MS || (60 * 60 * 1000).toString(),
         10
       ), // Default: 1 hour (3600000ms)
+    },
+    firestore: {
+      purgeIntervalMs: parseInt(
+        process.env.FIRESTORE_PURGE_INTERVAL_MS ||
+          (6 * 60 * 60 * 1000).toString(),
+        10
+      ), // Default: 6 hours (21600000ms)
+      purgeRetentionHours: parseInt(
+        process.env.FIRESTORE_PURGE_RETENTION_HOURS || "6",
+        10
+      ), // Default: 6 hours
     },
   };
 };

@@ -51,9 +51,9 @@ export class ActiveProcessor {
 
     this.isProcessing = true;
 
-    console.log(
-      `🔄 Processing active: ${activeId} (${this.active.name}) with candle size: ${this.candleSize}s`
-    );
+    // console.log(
+    //   `🔄 Processing active: ${activeId} (${this.active.name}) with candle size: ${this.candleSize}s`
+    // );
 
     try {
       // Fetch active data if not available
@@ -103,9 +103,9 @@ export class ActiveProcessor {
         }
       }, this.config.trading.candleAnalysisIntervalMs);
 
-      console.log(
-        `▶️ Started monitoring active ${activeId} (${this.candleSize}s) with ${this.config.trading.candleAnalysisIntervalMs}ms interval`
-      );
+      // console.log(
+      //   `▶️ Started monitoring active ${activeId} (${this.candleSize}s) with ${this.config.trading.candleAnalysisIntervalMs}ms interval`
+      // );
     } catch (error) {
       console.error(
         `❌ Failed to process active ${activeId} (${this.candleSize}s):`,
@@ -232,9 +232,9 @@ export class ActiveProcessor {
       this.isProcessing = false;
       this.lastSignal = null;
 
-      console.log(
-        `🛑 Stopped processing active ${this.active.activeId} (${this.candleSize}s)`
-      );
+      // console.log(
+      //   `🛑 Stopped processing active ${this.active.activeId} (${this.candleSize}s)`
+      // );
     } catch (error) {
       console.error(
         `❌ Failed during stop for active ${this.active.activeId}:`,
