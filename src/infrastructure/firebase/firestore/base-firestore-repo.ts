@@ -18,16 +18,11 @@ export abstract class BaseFirestoreRepo {
     }
 
     try {
-      const date = new Date();
-      const data = {
-        signal,
-        created: date,
-      };
+      const data = signal;
       await this.db
         .collection(collectionName)
-        .doc("" + date.getTime())
+        .doc("" + data.created.getTime())
         .set(data);
-      console.log(`Successfully insert signal:`, data);
     } catch (e) {
       console.error(`Failed insert signal: ${signal}`, e);
     }
@@ -81,4 +76,3 @@ export abstract class BaseFirestoreRepo {
     }
   }
 }
-

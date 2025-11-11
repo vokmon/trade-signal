@@ -31,7 +31,7 @@ export class SignalFormatter {
 
     return {
       message,
-      created: Date.now(),
+      created: new Date(),
       data: {
         activeId: active.activeId,
         activeName: active.name,
@@ -54,6 +54,6 @@ export class SignalFormatter {
   formatSignalForLogging(signal: TradeSignal): string {
     const { message, data } = signal;
 
-    return `📊 SIGNAL CHANGE DETECTED: ${message} ${JSON.stringify(data)}`;
+    return `🔔-📊 Signal detected: ${message} - ${data.timeframe}`;
   }
 }

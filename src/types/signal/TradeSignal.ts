@@ -1,12 +1,9 @@
-import type { SignalType } from "./Signal";
-import type { SignalResult } from "../../application/processors/indicators/signalCalculator";
-
 /**
  * Structured signal data ready for logging and persistence (e.g., Firestore)
  */
 export interface TradeSignal {
   message: string;
-  created: number;
+  created: Date;
   data: {
     activeId: number;
     activeName: string;
