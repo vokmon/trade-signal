@@ -55,16 +55,12 @@ export class FiveMinutesProcessor implements ISignalProcessor {
     try {
       const currencyPair = this.extractCurrencyPair(signal);
 
-      console.log(`Start calculating Order for ${currencyPair}`);
-
       const orderRateResult = this.randnBm();
       const shouldContinue = orderRateResult <= orderRate;
 
       if (!shouldContinue) {
         return;
       }
-
-      console.log(`Start calculating WIN/LOSS for ${currencyPair}`);
 
       const result = this.randnBm();
       const isWin = result <= winRate;
